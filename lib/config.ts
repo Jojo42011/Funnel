@@ -5,12 +5,37 @@
  * works cleanly when they are absent. See `.env.example` for documentation.
  */
 
+const DEFAULT_SITE_URL = "https://funnel.aethonintelligence.com";
+
+/**
+ * Resolve the canonical site URL defensively: an unset, empty, or malformed
+ * NEXT_PUBLIC_SITE_URL must never break the build (`new URL("")` throws).
+ * Falls back to the Vercel deployment URL, then to the default domain.
+ */
+function resolveSiteUrl(): string {
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL,
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+  ];
+  for (const raw of candidates) {
+    const value = raw?.trim();
+    if (!value) continue;
+    const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+    try {
+      return new URL(withProtocol).origin;
+    } catch {
+      // fall through to the next candidate
+    }
+  }
+  return DEFAULT_SITE_URL;
+}
+
 export const site = {
   name: "Aethon Intelligence",
   legalName: "Aethon Intelligence LLC",
   founder: "Jahan Patel",
   location: "San Antonio, Texas",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://funnel.aethonintelligence.com",
+  url: resolveSiteUrl(),
   mainSite: "https://aethonintelligence.com",
   caseStudies: "https://aethonintelligence.com/case-studies/",
 } as const;
@@ -23,7 +48,7 @@ export const site = {
  * When unset, the player renders a polished poster state with no layout shift.
  */
 export const vsl = {
-  embedId: process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID ?? "",
+  embedId: (process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID ?? "").trim(),
 } as const;
 
 /**
@@ -37,8 +62,8 @@ export const vsl = {
  * planned to be "/confirm" once that page exists.
  */
 export const booking = {
-  calLink: process.env.NEXT_PUBLIC_CAL_LINK ?? "",
-  redirectUrl: process.env.NEXT_PUBLIC_CAL_REDIRECT_URL ?? "",
+  calLink: (process.env.NEXT_PUBLIC_CAL_LINK ?? "").trim(),
+  redirectUrl: (process.env.NEXT_PUBLIC_CAL_REDIRECT_URL ?? "").trim(),
   fallbackHref: "https://aethonintelligence.com/#contact",
 } as const;
 

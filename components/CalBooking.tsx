@@ -113,9 +113,7 @@ export default function CalBooking() {
 function BookingFallback({ failed }: { failed: boolean }) {
   return (
     <div className="flex min-h-[280px] w-full flex-col items-center justify-center gap-5 rounded-2xl border border-line bg-white px-6 py-12 text-center">
-      <p className="font-display text-2xl">
-        Prefer to reach out <em>directly?</em>
-      </p>
+      <p className="font-display text-2xl">Prefer to reach out directly?</p>
       <p className="max-w-md text-sm leading-relaxed text-muted">
         {failed
           ? "The calendar could not load just now. You can reach us directly and we will set the walkthrough up by hand."

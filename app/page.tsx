@@ -18,25 +18,21 @@ export default function Home() {
             id="hero-heading"
             className="font-display mx-auto max-w-3xl text-[2rem] leading-[1.15] sm:text-[2.75rem] sm:leading-[1.14] lg:text-5xl"
           >
-            We install a custom AI lead-response system that turns the leads
-            you&rsquo;re already paying for into{" "}
-            <em className="text-saffron">booked conversations</em>
+            We install a custom AI lead response system that turns the leads
+            you already pay for into{" "}
+            <span className="text-saffron">booked conversations</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base italic leading-relaxed text-muted sm:text-lg">
-            Built around your existing ads, CRM, and sales process — so new
-            inquiries get a fast response, consistent follow-up, real
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
+            Built around your existing ads, CRM, and sales process, so new
+            inquiries get a fast response, consistent follow up, real
             qualification, and a clear next step. Without buying more leads.
           </p>
 
           <div className="mx-auto mt-10 max-w-3xl">
             <VslPlayer
               video={vsl.main}
-              posterTitle={
-                <>
-                  How the system works, <em>in plain terms</em>
-                </>
-              }
+              posterTitle="How the system works"
               posterText="A short walkthrough of what we install, how it fits your operation, and what a good fit looks like."
             />
           </div>
@@ -44,7 +40,7 @@ export default function Home() {
           <div className="mt-10">
             <a
               href={bookingHref}
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gold px-6 py-3.5 text-[15px] font-semibold text-ink shadow-[0_6px_24px_-6px_rgba(199,115,0,0.45)] transition-colors duration-200 hover:bg-[#e6a800] sm:px-11 sm:py-4 sm:text-lg"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gold px-6 py-3.5 text-[15px] font-bold text-ink shadow-[0_6px_24px_-6px_rgba(199,115,0,0.45)] transition-colors duration-200 hover:bg-[#e6a800] sm:px-11 sm:py-4 sm:text-lg"
             >
               Book Your Free Walkthrough Call
               <svg

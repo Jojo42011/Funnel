@@ -14,9 +14,7 @@ export default function SiteFooter() {
       <div className="mx-auto w-full max-w-4xl px-5 py-14 text-center sm:px-8">
         <div className="flex flex-col items-center gap-3">
           <Image src="/aethon-logo.svg" alt="" width={40} height={40} />
-          <p className="font-display text-lg">
-            Aethon <em>Intelligence</em>
-          </p>
+          <p className="font-display text-lg">Aethon Intelligence</p>
           <p className="text-sm text-muted">
             {site.legalName} · {site.location}
           </p>

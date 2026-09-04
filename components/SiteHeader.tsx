@@ -13,7 +13,7 @@ export default function SiteHeader() {
         <a
           href={routes.home}
           className="flex items-center gap-2.5"
-          aria-label={`${site.name} — home`}
+          aria-label={`${site.name} home`}
         >
           <Image
             src="/aethon-logo.svg"
@@ -23,7 +23,7 @@ export default function SiteHeader() {
             priority
           />
           <span className="font-display text-lg leading-none tracking-tight sm:text-xl">
-            Aethon <em>Intelligence</em>
+            Aethon Intelligence
           </span>
         </a>
         <CtaButton size="md">

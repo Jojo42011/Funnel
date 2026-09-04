@@ -8,46 +8,31 @@ export const metadata: Metadata = {
   title: "Your Call Is Scheduled | Aethon Intelligence",
   description:
     "Your walkthrough call with Aethon Intelligence is booked. Watch the short preparation video and confirm your calendar invitation.",
-  // Post-booking page — not meant to be found via search.
+  // Post-booking page. Not meant to be found via search.
   robots: { index: false, follow: false },
 };
 
-const confirmSteps = [
-  {
-    title: "Check your email",
-    body: "A confirmation with your call details is on its way to the address you entered when booking.",
-  },
-  {
-    title: "Open the calendar invitation",
-    body: "Inside that email you'll find a calendar invitation for the time you selected.",
-  },
-  {
-    title: "Click “Yes” to confirm",
-    body: "Accepting the invitation locks the time on both calendars, so the call actually happens.",
-  },
-];
-
 const prepItems = [
-  "Where your leads come from — ads, listings, portals, content, referrals",
+  "Where your leads come from: ads, listings, portals, content, referrals",
   "Roughly how many leads you receive per month",
   "What you spend on advertising or content each month",
   "How new leads are responded to today, and by whom",
   "The CRM and tools your team currently runs on",
-  "Your booking and close rates, if you know them — rough numbers are fine",
+  "Your booking and close rates if you know them. Rough numbers are fine",
 ];
 
 const duringCall = [
   {
     title: "We map your current lead flow",
-    body: "From the moment a lead comes in to the moment a conversation is booked — sources, response times, follow-up, qualification, and where things stall.",
+    body: "From the moment a lead comes in to the moment a conversation is booked. Sources, response times, follow up, qualification, and where things stall.",
   },
   {
     title: "We look for the gap worth fixing",
-    body: "Whether meaningful opportunity is being lost between the leads you generate and the conversations you book — and roughly what that's costing.",
+    body: "Whether meaningful opportunity is being lost between the leads you generate and the conversations you book, and roughly what that is costing.",
   },
   {
-    title: "We tell you honestly whether it's a fit",
-    body: "If a system built around your operation would move the numbers, we'll show you what it looks like. If it wouldn't, we'll say so and you'll leave with a clearer map of your own process.",
+    title: "We tell you honestly whether it fits",
+    body: "If a system built around your operation would move the numbers, we will show you what it looks like. If it would not, we will say so, and you will leave with a clearer map of your own process.",
   },
 ];
 
@@ -55,70 +40,99 @@ export default function ConfirmPage() {
   return (
     <>
       <main>
-        {/* 1–2: Headline + supporting sentence */}
+        {/* Headline + supporting sentence */}
         <section
           aria-labelledby="confirm-heading"
           className="mx-auto w-full max-w-4xl px-5 pt-16 text-center sm:px-8 sm:pt-24"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-saffron">
-            You&rsquo;re booked
+          <p className="text-sm font-bold uppercase tracking-[0.16em] text-saffron">
+            You are booked
           </p>
           <h1
             id="confirm-heading"
             className="font-display mx-auto mt-4 max-w-3xl text-[2rem] leading-[1.15] sm:text-[2.75rem] sm:leading-[1.14]"
           >
-            Congratulations — your walkthrough call is{" "}
-            <em className="text-saffron">scheduled</em>
+            Congratulations, your walkthrough call is{" "}
+            <span className="text-saffron">scheduled</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
             Before the call, do two things: watch the short video below, and
             confirm the calendar invitation in your inbox.
           </p>
 
-          {/* 3: Preparation video (~3 min) */}
+          {/* Preparation video */}
           <div className="mx-auto mt-10 max-w-3xl">
             <VslPlayer
               video={vsl.confirm}
-              posterTitle={
-                <>
-                  Before your call, <em>watch this</em>
-                </>
-              }
-              posterText="Three minutes on what the walkthrough covers, what to bring, and how we'll decide together whether there's a fit."
+              posterTitle="Watch this before your call"
+              posterText="Three minutes on what the walkthrough covers, what to bring, and how we will decide together whether it fits."
             />
           </div>
         </section>
 
-        {/* 4: Calendar confirmation steps */}
+        {/* Calendar confirmation steps with visuals */}
         <section
           aria-labelledby="calendar-heading"
-          className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20"
+          className="mx-auto w-full max-w-5xl px-5 py-16 sm:px-8 sm:py-20"
         >
           <h2
             id="calendar-heading"
             className="font-display text-center text-2xl sm:text-3xl"
           >
-            First: confirm your <em>calendar invitation</em>
+            First: confirm your calendar invitation
           </h2>
-          <ol className="mt-10 grid gap-6 sm:grid-cols-3">
-            {confirmSteps.map((step, i) => (
-              <li
-                key={step.title}
-                className="rounded-2xl border border-line bg-white p-7"
-              >
-                <span className="font-display text-2xl text-saffron">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink-2">
-                  {step.body}
-                </p>
-              </li>
-            ))}
+          <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-ink-2">
+            This is what it looks like. Three quick steps so the call is locked
+            on both calendars.
+          </p>
+
+          <ol className="mt-10 grid gap-6 md:grid-cols-3">
+            {/* Step 1: check email */}
+            <li className="flex min-w-0 flex-col rounded-2xl border border-line bg-white p-7">
+              <StepBadge n={1} />
+              <h3 className="mt-3 text-xl font-bold">Check your email</h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-2">
+                A confirmation with your call details is in the inbox you used
+                when booking.
+              </p>
+              <div className="mt-auto pt-6">
+                <EmailVisual />
+              </div>
+            </li>
+
+            {/* Step 2: open the invitation */}
+            <li className="flex min-w-0 flex-col rounded-2xl border border-line bg-white p-7">
+              <StepBadge n={2} />
+              <h3 className="mt-3 text-xl font-bold">
+                Open the calendar invitation
+              </h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-2">
+                Inside that email you will find a calendar invitation for the
+                time you selected.
+              </p>
+              <div className="mt-auto pt-6">
+                <InviteVisual />
+              </div>
+            </li>
+
+            {/* Step 3: click yes */}
+            <li className="flex min-w-0 flex-col rounded-2xl border border-line bg-white p-7">
+              <StepBadge n={3} />
+              <h3 className="mt-3 text-xl font-bold">
+                Click &ldquo;Yes&rdquo; to confirm
+              </h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-2">
+                Accepting the invitation locks the time on both calendars, so
+                the call actually happens.
+              </p>
+              <div className="mt-auto pt-6">
+                <RsvpVisual />
+              </div>
+            </li>
           </ol>
         </section>
 
-        {/* 5: How to prepare */}
+        {/* How to prepare */}
         <section
           aria-labelledby="prepare-heading"
           className="border-y border-line-soft bg-canvas-tint"
@@ -128,9 +142,9 @@ export default function ConfirmPage() {
               id="prepare-heading"
               className="font-display text-center text-2xl sm:text-3xl"
             >
-              How to prepare — <em>have these handy</em>
+              How to prepare
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-[15px] leading-relaxed text-muted">
+            <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-ink-2">
               The walkthrough is built on your real numbers, not a generic
               pitch. The more of these you can bring, the more useful the call
               will be:
@@ -139,7 +153,7 @@ export default function ConfirmPage() {
               {prepItems.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3 rounded-xl border border-line bg-white px-5 py-4 text-[15px] leading-relaxed text-ink-2"
+                  className="flex items-start gap-3 rounded-xl border border-line bg-white px-5 py-4 text-base leading-relaxed text-ink-2"
                 >
                   <svg
                     aria-hidden="true"
@@ -162,7 +176,7 @@ export default function ConfirmPage() {
           </div>
         </section>
 
-        {/* 6: What happens during the call */}
+        {/* What happens during the call */}
         <section
           aria-labelledby="during-heading"
           className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20"
@@ -171,7 +185,7 @@ export default function ConfirmPage() {
             id="during-heading"
             className="font-display text-center text-2xl sm:text-3xl"
           >
-            What happens <em>on the call</em>
+            What happens on the call
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-3">
             {duringCall.map((item, i) => (
@@ -182,8 +196,8 @@ export default function ConfirmPage() {
                 <span className="font-display text-sm text-faint">
                   0{i + 1}
                 </span>
-                <h3 className="mt-2 text-lg font-semibold">{item.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink-2">
+                <h3 className="mt-2 text-lg font-bold">{item.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-ink-2">
                   {item.body}
                 </p>
               </div>
@@ -191,12 +205,12 @@ export default function ConfirmPage() {
           </div>
         </section>
 
-        {/* 7: Proof */}
+        {/* Proof */}
         <div className="border-t border-line-soft">
           <ProofSection />
         </div>
 
-        {/* 8: Reschedule / contact */}
+        {/* Reschedule / contact */}
         <section
           aria-labelledby="reschedule-heading"
           className="border-t border-line-soft bg-canvas-tint"
@@ -206,15 +220,15 @@ export default function ConfirmPage() {
               id="reschedule-heading"
               className="font-display text-2xl sm:text-3xl"
             >
-              Need to <em>reschedule?</em>
+              Need to reschedule?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-ink-2">
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink-2">
               Life happens. Use the reschedule link in your confirmation email
-              to pick a new time — it takes a few seconds and keeps your spot.
+              to pick a new time. It takes a few seconds and keeps your spot.
               If anything else comes up before the call,{" "}
               <a
                 href={routes.contact}
-                className="font-medium text-saffron underline-offset-4 hover:underline"
+                className="font-semibold text-saffron underline-offset-4 hover:underline"
               >
                 reach out to us directly
               </a>
@@ -225,5 +239,139 @@ export default function ConfirmPage() {
       </main>
       <SiteFooter />
     </>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Step visuals: simple brand-styled mockups of what the prospect      */
+/* will actually see in their inbox and calendar.                      */
+/* ------------------------------------------------------------------ */
+
+function StepBadge({ n }: { n: number }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-gold text-base font-bold text-ink"
+    >
+      {n}
+    </span>
+  );
+}
+
+/** Mock inbox row showing the confirmation email arriving. */
+function EmailVisual() {
+  return (
+    <div
+      aria-hidden="true"
+      className="rounded-xl border border-line bg-canvas p-3"
+    >
+      <div className="rounded-lg border border-line bg-white p-3 shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-soft">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#7a5200"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-10 6L2 7" />
+            </svg>
+          </span>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-bold text-ink">
+              Booking confirmed: Walkthrough Call
+            </p>
+            <p className="truncate text-xs text-muted">
+              Aethon Intelligence · just now
+            </p>
+          </div>
+          <span className="ml-auto h-2 w-2 shrink-0 rounded-full bg-saffron" />
+        </div>
+      </div>
+      <div className="mt-2 rounded-lg border border-line-soft bg-white/60 p-3">
+        <div className="h-2 w-3/4 rounded bg-line-soft" />
+        <div className="mt-2 h-2 w-1/2 rounded bg-line-soft" />
+      </div>
+    </div>
+  );
+}
+
+/** Mock calendar invitation card. */
+function InviteVisual() {
+  return (
+    <div
+      aria-hidden="true"
+      className="rounded-xl border border-line bg-canvas p-3"
+    >
+      <div className="rounded-lg border border-line bg-white p-3 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="w-12 shrink-0 overflow-hidden rounded-lg border border-line text-center">
+            <div className="bg-ink py-0.5 text-[9px] font-bold uppercase tracking-wide text-canvas">
+              Your
+            </div>
+            <div className="py-1 text-sm font-bold text-ink">Date</div>
+          </div>
+          <div className="min-w-0">
+            <p className="truncate text-[13px] font-bold text-ink">
+              Walkthrough Call
+            </p>
+            <p className="truncate text-xs text-muted">
+              Your selected time · 30 min
+            </p>
+            <p className="truncate text-xs text-muted">
+              You + Aethon Intelligence
+            </p>
+          </div>
+        </div>
+      </div>
+      <p className="mt-2 text-center text-xs font-semibold text-muted">
+        The invitation is attached to the email
+      </p>
+    </div>
+  );
+}
+
+/** Mock RSVP row with Yes highlighted. */
+function RsvpVisual() {
+  return (
+    <div
+      aria-hidden="true"
+      className="rounded-xl border border-line bg-canvas p-3"
+    >
+      <div className="rounded-lg border border-line bg-white p-3 shadow-sm">
+        <p className="text-xs font-semibold text-muted">Going?</p>
+        <div className="mt-2 flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-[13px] font-bold text-ink ring-2 ring-saffron/40">
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            Yes
+          </span>
+          <span className="rounded-full border border-line px-3.5 py-1.5 text-[13px] font-semibold text-muted">
+            No
+          </span>
+          <span className="rounded-full border border-line px-3.5 py-1.5 text-[13px] font-semibold text-muted">
+            Maybe
+          </span>
+        </div>
+      </div>
+      <p className="mt-2 text-center text-xs font-semibold text-muted">
+        Click Yes and you are locked in
+      </p>
+    </div>
   );
 }

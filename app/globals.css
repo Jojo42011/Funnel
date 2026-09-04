@@ -2,8 +2,8 @@
 
 /*
   Aethon Intelligence brand tokens.
-  Derived from aethonintelligence.com (light theme):
-  warm off-white canvas · near-black ink · saffron accent · Fraunces + Inter.
+  Warm off-white canvas, near-black ink, saffron accent, Inter throughout.
+  Headlines are straight bold sans, matching the reference funnel's clean look.
 */
 @theme {
   --color-canvas: #fbf8f1;
@@ -20,7 +20,6 @@
   --color-line-soft: rgba(25, 21, 16, 0.07);
   --color-cream: #e9e1d0;
 
-  --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 }
@@ -62,16 +61,11 @@ body {
   border-radius: 4px;
 }
 
-/* Serif display headings */
+/* Display headings: straight, bold, tight sans */
 .font-display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.015em;
-}
-
-.font-display em {
-  font-style: italic;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 /* FAQ accordion: rotate marker, hide default disclosure triangle */

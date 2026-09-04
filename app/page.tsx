@@ -1,6 +1,6 @@
 import SiteFooter from "@/components/SiteFooter";
 import VslPlayer from "@/components/VslPlayer";
-import { bookingHref } from "@/lib/config";
+import { bookingHref, vsl } from "@/lib/config";
 
 /**
  * Single-page VSL funnel, mirroring the HIS reference format:
@@ -30,7 +30,15 @@ export default function Home() {
           </p>
 
           <div className="mx-auto mt-10 max-w-3xl">
-            <VslPlayer />
+            <VslPlayer
+              video={vsl.main}
+              posterTitle={
+                <>
+                  How the system works, <em>in plain terms</em>
+                </>
+              }
+              posterText="A short walkthrough of what we install, how it fits your operation, and what a good fit looks like."
+            />
           </div>
 
           <div className="mt-10">

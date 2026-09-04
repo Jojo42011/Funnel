@@ -40,6 +40,16 @@ const faqs: { question: string; answer: string }[] = [
       "The walkthrough is the first step. If there's a fit, the audit begins from there, and build timelines are scoped to your operation's complexity — we'll give you a realistic timeline in writing rather than a universal promise.",
   },
   {
+    question: "What does Aethon need from us?",
+    answer:
+      "Context and access, in that order. Early on: an honest picture of your lead sources, volumes, current response process, and what qualification means to you. During the build: access to the tools involved — CRM, calendars, phone or messaging channels — and a point person who can answer questions about how things really work. Implementation is collaborative; the system is only as good as the workflow it's built around.",
+  },
+  {
+    question: "What happens after the first call?",
+    answer:
+      "If there's a fit, the next step is the audit: we map your actual lead flow end to end and establish the baseline numbers. From there you'll get a specific proposal — what would be built, how it fits your operation, how success is measured, and a realistic timeline. Discovery sometimes surfaces larger operational opportunities beyond lead response; whether to pursue those is always your call.",
+  },
+  {
     question: "What does the free walkthrough involve?",
     answer:
       "A focused call about your operation: where leads come from, what happens when one arrives, where responses and follow-up currently break down, and what that's likely costing. If there's a meaningful gap, we'll show you what a system built around your workflow would look like. If there isn't, we'll say so.",

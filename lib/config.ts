@@ -41,14 +41,36 @@ export const site = {
 } as const;
 
 /**
- * Vidalytics VSL embed.
+ * Vidalytics video embeds, one per page.
  *
- * Set NEXT_PUBLIC_VIDALYTICS_EMBED_ID to the embed id from the Vidalytics
- * embed snippet (the part after "vidalytics_embed_", e.g. "AbC123xyz").
- * When unset, the player renders a polished poster state with no layout shift.
+ * Each video takes two values from its Vidalytics embed snippet: the embed id
+ * (the part after "vidalytics_embed_") and the loader.min.js URL. When a
+ * video's values are unset, the player renders a polished poster state with
+ * no layout shift.
  */
+export type VslConfig = { embedId: string; loaderUrl: string };
+
+const vslFromEnv = (id?: string, loader?: string): VslConfig => ({
+  embedId: (id ?? "").trim(),
+  loaderUrl: (loader ?? "").trim(),
+});
+
 export const vsl = {
-  embedId: (process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID ?? "").trim(),
+  /** Main landing page VSL (5–10 min). */
+  main: vslFromEnv(
+    process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID,
+    process.env.NEXT_PUBLIC_VIDALYTICS_LOADER_URL,
+  ),
+  /** /confirm preparation video (~3 min). */
+  confirm: vslFromEnv(
+    process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID_CONFIRM,
+    process.env.NEXT_PUBLIC_VIDALYTICS_LOADER_URL_CONFIRM,
+  ),
+  /** /faq pre-second-call video. */
+  faq: vslFromEnv(
+    process.env.NEXT_PUBLIC_VIDALYTICS_EMBED_ID_FAQ,
+    process.env.NEXT_PUBLIC_VIDALYTICS_LOADER_URL_FAQ,
+  ),
 } as const;
 
 /**
@@ -58,12 +80,16 @@ export const vsl = {
  * (the part after cal.com/). When unset, booking CTAs fall back to the
  * contact section of the main Aethon site so the button never dead-ends.
  *
- * NEXT_PUBLIC_CAL_REDIRECT_URL (optional) is the post-booking redirect,
- * planned to be "/confirm" once that page exists.
+ * NEXT_PUBLIC_CAL_REDIRECT_URL overrides the post-booking redirect, which
+ * defaults to /confirm. Because the main-page CTA links to the Cal.com
+ * booking page directly, the redirect to /confirm must ALSO be configured in
+ * the Cal.com event type settings ("Redirect on booking"); this value applies
+ * when the inline embed component is used.
  */
 export const booking = {
   calLink: (process.env.NEXT_PUBLIC_CAL_LINK ?? "").trim(),
-  redirectUrl: (process.env.NEXT_PUBLIC_CAL_REDIRECT_URL ?? "").trim(),
+  redirectUrl:
+    (process.env.NEXT_PUBLIC_CAL_REDIRECT_URL ?? "").trim() || "/confirm",
   fallbackHref: "https://aethonintelligence.com/#contact",
 } as const;
 
@@ -77,16 +103,13 @@ export const isBookingConfigured = booking.calLink.length > 0;
 export const bookingHref = isBookingConfigured
   ? `https://cal.com/${booking.calLink}`
   : booking.fallbackHref;
-export const isVslConfigured = vsl.embedId.length > 0;
 
 /**
- * Route constants. `/confirm` and `/faq` are planned but intentionally not
- * built yet — reference routes only through this object so wiring them up
- * later is a one-line change.
+ * Route constants — reference routes only through this object so a future
+ * change (e.g. moving legal pages local) is a one-line edit.
  */
 export const routes = {
   home: "/",
-  // Planned pages (not yet implemented):
   confirm: "/confirm",
   faq: "/faq",
   // Legal pages live on the main Aethon site today. Swap these to local

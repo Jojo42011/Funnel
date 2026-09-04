@@ -37,8 +37,8 @@ export default function ConfirmPage() {
             id="confirm-heading"
             className="font-display mx-auto mt-4 max-w-3xl text-[2rem] leading-[1.15] sm:text-[2.75rem] sm:leading-[1.14]"
           >
-            Congratulations, your walkthrough call is{" "}
-            <span className="text-saffron">scheduled</span>
+            Congratulations, Your Walkthrough Call Is{" "}
+            <span className="text-saffron">Scheduled</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
             Before the call, do two things: watch the short video below, and

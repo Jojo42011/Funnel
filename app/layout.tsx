@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Turn the Leads You Already Generate Into Booked Conversations",
     description:
-      "A custom AI lead response system built around your existing operation. Fast response, consistent follow up, real qualification. Book a free walkthrough.",
+      "Every new inquiry gets a fast response, consistent follow up, real qualification, and a clear next step. Without spending more on ads, buying more leads, or chasing more referrals.",
     url: site.url,
     siteName: site.name,
     locale: "en_US",

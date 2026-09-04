@@ -44,8 +44,8 @@ export default function FaqPage() {
             id="faq-hero-heading"
             className="font-display mx-auto mt-4 max-w-3xl text-[2rem] leading-[1.15] sm:text-[2.75rem] sm:leading-[1.14]"
           >
-            More of the leads you already generate, turned into{" "}
-            <span className="text-saffron">booked conversations</span>
+            More of the Leads You Already Generate, Turned Into{" "}
+            <span className="text-saffron">Booked Conversations</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-2 sm:text-xl">
             Watch this before your next call. It covers what Aethon actually

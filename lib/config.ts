@@ -68,6 +68,15 @@ export const booking = {
 } as const;
 
 export const isBookingConfigured = booking.calLink.length > 0;
+
+/**
+ * Where the primary CTA sends the visitor: the Cal.com booking page when
+ * configured, otherwise the contact section of the main Aethon site so the
+ * button never dead-ends.
+ */
+export const bookingHref = isBookingConfigured
+  ? `https://cal.com/${booking.calLink}`
+  : booking.fallbackHref;
 export const isVslConfigured = vsl.embedId.length > 0;
 
 /**
@@ -77,7 +86,6 @@ export const isVslConfigured = vsl.embedId.length > 0;
  */
 export const routes = {
   home: "/",
-  book: "/#book",
   // Planned pages (not yet implemented):
   confirm: "/confirm",
   faq: "/faq",

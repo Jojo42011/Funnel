@@ -47,8 +47,9 @@ export default function SiteFooter() {
         </nav>
 
         <p className="mx-auto mt-8 max-w-2xl text-xs leading-relaxed text-faint">
-          Disclaimer: client results referenced on this page come from specific
-          engagements and are described in their actual context. They are not
+          Disclaimer: any client results referenced on this page, in the video,
+          or on pages linked from it come from specific engagements and are
+          described in their actual context. They are not
           typical, are not guarantees, and are not projections of what any
           other business will achieve. Outcomes depend on your lead volume,
           lead sources, sales process, and participation during implementation.

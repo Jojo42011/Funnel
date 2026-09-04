@@ -1,4 +1,4 @@
-import { routes } from "@/lib/config";
+import { bookingHref } from "@/lib/config";
 
 type CtaButtonProps = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ type CtaButtonProps = {
  */
 export default function CtaButton({
   children,
-  href = routes.book,
+  href = bookingHref,
   size = "lg",
   variant = "gold",
   className = "",

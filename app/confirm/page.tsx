@@ -21,21 +21,6 @@ const prepItems = [
   "Your booking and close rates if you know them. Rough numbers are fine",
 ];
 
-const duringCall = [
-  {
-    title: "We map your current lead flow",
-    body: "From the moment a lead comes in to the moment a conversation is booked. Sources, response times, follow up, qualification, and where things stall.",
-  },
-  {
-    title: "We look for the gap worth fixing",
-    body: "Whether meaningful opportunity is being lost between the leads you generate and the conversations you book, and roughly what that is costing.",
-  },
-  {
-    title: "We tell you honestly whether it fits",
-    body: "If a system built around your operation would move the numbers, we will show you what it looks like. If it would not, we will say so, and you will leave with a clearer map of your own process.",
-  },
-];
-
 export default function ConfirmPage() {
   return (
     <>
@@ -173,35 +158,6 @@ export default function ConfirmPage() {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-
-        {/* What happens during the call */}
-        <section
-          aria-labelledby="during-heading"
-          className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20"
-        >
-          <h2
-            id="during-heading"
-            className="font-display text-center text-2xl sm:text-3xl"
-          >
-            What happens on the call
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {duringCall.map((item, i) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-line bg-white p-7"
-              >
-                <span className="font-display text-sm text-faint">
-                  0{i + 1}
-                </span>
-                <h3 className="mt-2 text-lg font-bold">{item.title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-ink-2">
-                  {item.body}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
 
